@@ -1,23 +1,22 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="generator" content="Bharatham 2k17">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png" type="image/x-icon">
-		<link rel="manifest" href="https://rawgit.com/kirananto/bharatham/master/assets/manifest.json">
+		<link rel="shortcut icon" href="./assets/images/icon.png" type="image/x-icon">
+		<link rel="manifest" href="./manifest.json">
 		<meta name="theme-color" content="#401c42" />
 		<meta name="description" content="">
 		<title>Bharatham 2k17</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/icons/icons.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/css/style.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/socicon/css/styles.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/theme/css/style.css">
-		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/additional/css/additional.css">
+		<link rel="stylesheet" href="./assets/web/assets/icons/icons.css">
+		<link rel="stylesheet" href="./assets/tether/tether.min.css">
+		<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./assets/dropdown/css/style.css">
+		<link rel="stylesheet" href="./assets/socicon/css/styles.css">
+		<link rel="stylesheet" href="./assets/theme/css/style.css">
+		<link rel="stylesheet" href="./assets/additional/css/additional.css">
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
@@ -83,7 +82,7 @@
 					<div class="media-container-row">
 						<div v-for="group in groups" class="plan col-12 mx-2 my-2 justify-content-center col-lg-2">
 							<div class="plan-header text-center pt-5">
-								<img :src="'https://rawgit.com/kirananto/bharatham/master/assets/images/group/'+group.groupname+'.png'"
+								<img :src="'./assets/images/group/'+group.groupname+'.png'"
 								class="groupimg">
 								<h3 class=" mbr-fonts-style display-5 text-black " v-text="group.groupname"></h3>
 								<div class="plan-body" style="padding-bottom: 2rem !important;" >
@@ -94,7 +93,7 @@
 						</div>
 					</div>
 					<a href="https://play.google.com/store/apps/details?id=com.roundmelon.jv.bharatham2k17&hl=en" class="play_button col-md-12 ">
-						<img class="col-md-2 offset-md-5" style="margin-top: 3rem;" src="https://rawgit.com/kirananto/bharatham/master/assets/images/play_button.png">
+						<img class="col-md-2 offset-md-5" style="margin-top: 3rem;" src="./assets/images/play_button.png">
 					</a>
 			</section>
 			<section once="" class="cid-qrtL4E2nFT" id="footer7-o" data-rv-view="83">
@@ -149,7 +148,7 @@
 								<div v-for="video in videos" class="col-lg-6 col-md-6" style="margin-bottom:50px;" >
 									<iframe :src="video" frameborder="0" style="padding: 0px; margin:0px; width:100%; height:100%; border-radius: 8px;" allowfullscreen></iframe>
 								</div>
-								<div v-for="image in images" class="col-lg-3 col-md-3" style="margin-bottom: 50px;"><img style="width: 100%; height: 100%; padding: 0px; margin:0px; border-radius: 8px;" :src="image.url">
+								<div v-for="image in images" class="col-lg-3 col-md-3" style="margin-bottom: 50px;"><img style="width: 100%; padding: 0px; margin:0px; border-radius: 8px;" :src="image.url">
 								</div>
 							</div>
 						</div>
@@ -191,7 +190,7 @@
 			</div>
 		</div>
 		<audio loop autoplay = "autoplay" id="myAudio"
-			<source src="https://rawgit.com/kirananto/bharatham/master/assets/audio/bgm.mp3" type='audio/mp4'>
+			<source src="./assets/audio/bgm.mp3" type='audio/mp4'>
 		</audio>
 		<style>
 			@media (max-width: 768px) {
@@ -206,16 +205,17 @@
 				}
 			}
 		</style>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/jquery/jquery.min.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/js/bootstrap.min.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/smooth-scroll/smooth-scroll.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/js/script.min.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-		<script src="https://rawgit.com/kirananto/bharatham/master/assets/jarallax/jarallax.min.js"></script>
-		<script src="https://cdn.rawgit.com/kirananto/bharatham/master/assets/theme/js/script.js"></script>
+		<script src="./assets/web/assets/jquery/jquery.min.js"></script>
+		<script src="./assets/tether/tether.min.js"></script>
+		<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="./assets/smooth-scroll/smooth-scroll.js"></script>
+		<script src="./assets/dropdown/js/script.min.js"></script>
+		<script src="./assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+		<script src="./assets/jarallax/jarallax.min.js"></script>
+		<script src="./assets/theme/js/script.js"></script>
 		<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.0/Rx.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="pattern.js"></script>
 	</body>
 </html>

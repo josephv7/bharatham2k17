@@ -1,0 +1,25 @@
+{
+  "short_name": "bharatham",
+  "name": "Bharatham",
+  "icons": [
+    {
+      "src": "https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html?launcher=true",
+  "background_color": "#401c42",
+  "theme_color":"#401c42",
+  "display": "standalone" 
+}
