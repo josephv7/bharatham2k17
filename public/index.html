@@ -1,587 +1,221 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Bharatham 2k17">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png" type="image/x-icon">
-<link rel="manifest" href="https://rawgit.com/kirananto/bharatham/master/assets/manifest.json">
-<meta name="theme-color" content="#401c42" />
-<meta name="description" content="">
-<title>BHARATHAM 2k17</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/icons/icons.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/css/style.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/socicon/css/styles.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/theme/css/style.css">
-<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/additional/css/additional.css">
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
-<script>
-// Initialize Firebase
-var config = {
-apiKey: "AIzaSyDwhlGYmRDt_-AG_dNSQfbJnBQ6EUD5nh4",
-authDomain: "bharatham-2k17.firebaseapp.com",
-databaseURL: "https://bharatham-2k17.firebaseio.com",
-projectId: "bharatham-2k17",
-storageBucket: "bharatham-2k17.appspot.com",
-messagingSenderId: "859947034253"
-};
-firebase.initializeApp(config);
-var scoreRef = firebase.database().ref('Score/House');
-var galleryRef = firebase.database().ref('gallery');
-var videoRef = firebase.database().ref('video_app');
-</script>
-
-</head>
-<body>
-
-<div id="app">
-<section class="menu cid-qr22Lg6fJW" once="menu" id="menu1-g" data-rv-view="78">
-
-
-
-<nav class="navbar navbar-dropdown align-items-center navbar-toggleable-sm bg-color transparent">
-<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<div class="hamburger">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
-</button>
-<div class="menu-logo">
-<div class="navbar-brand">
-
-
-</div>
-</div>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true">
-<li v-for="(item,i) in menu"
-:key = "i"
-class="nav-item">
-<a data-toggle="modal"
-v-bind:data-target="item.class"
-class="nav-link link display-4" v-text="item.title">
-</a>
-</li>
-<li class="nav-item">
-<a class="nav-link link">
-<span class="mbri-music mbr-iconfont mbr-iconfont-btn" onclick="aud_play_pause()" id="audio"></span>
-</a>
-</li>
-
-</ul>
-
-</div>
-</nav>
-</section>
-
-<section class="engine"></section>
-<section class="cid-qr22LijaMf mbr-fullscreen mbr-parallax-background" id="header2-e" data-rv-view="80">
-
-<div class="container align-center">
-<div class="media-container-column mbr-white col-md-10 offset-md-1">
-<canvas id="scene" class="mbr-section-title " style="margin-top:70px;"></canvas>
-
-
-</div>
-</div>
-</section>
-
-
-<section v-if="testing" class="cid-qsa76ohnMU mbr-fullscreen " id="pricing-tables1-k" data-rv-view="32">
-
-
-<div class="container">
-<div class="media-container-row">
-
-
-<div v-for="group in groups" class="plan col-12 mx-2 my-2 justify-content-center col-lg-2">
-<div class="plan-header text-center pt-5">
-<img :src="'https://rawgit.com/kirananto/bharatham/master/assets/images/group/'+group.groupname+'.png'"
-class="groupimg">
-<h3 class=" mbr-fonts-style display-5 text-black " v-text="group.groupname">
-</h3>
-<div class="plan-body" style="padding-bottom: 2rem !important;" >
-<span class="price-figure mbr-fonts-style display-1" v-text="group.Points">
-</span>
-<small class=" mbr-fonts-style display-7"><br>
-Points
-</small >
-</div>
-</div>
-</div>
-
-</div><a href="https://play.google.com/store/apps/details?id=com.roundmelon.jv.bharatham2k17&hl=en" class="play_button col-md-12 ">
-<img class="col-md-2 offset-md-5" style="margin-top: 3rem;"
-src="https://rawgit.com/kirananto/bharatham/master/assets/images/play_button.png"></a>
-</section>
-<section once="" class="cid-qrtL4E2nFT" id="footer7-o" data-rv-view="83">
-
-
-
-
-
-<div class="container">
-<div class="media-container-row align-center mbr-white">
-<div class="row">
-<ul class="foot-menu">
-
-
-
-
-
-<li v-for="(item,i) in menu"
-:key = "i"
-class="foot-menu-item mbr-fonts-style display-7">
-<a class="text-white mbr-bold"
-data-toggle="modal"
-v-bind:data-target="item.class"
-target="_blank"><span v-text="item.title"></span></a>
-</li>
-</ul>
-</div>
-<div class="row">
-<div class="social-list align-right pb-2">
-
-
-<div class="soc-item">
-<a href="https://www.facebook.com/bharatham2017" target="_blank">
-<span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon" media-simple="true"></span>
-</a>
-</div><div class="soc-item">
-<a href="https://instagram.com/_u/bharatham2k176699" target="_blank">
-<span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon" media-simple="true"></span>
-</a>
-</div><div class="soc-item">
-<a href="https://play.google.com/store/apps/details?id=com.roundmelon.jv.bharatham2k17&hl=en" target="_blank">
-<span class="mbr-iconfont mbr-iconfont-social socicon-play socicon" media-simple="true"></span>
-</a>
-</div></div>
-</div>
-<div class="row row-copirayt">
-<p class="mbr-text mb-0 mbr-fonts-style mbr-white display-7">
-© Copyright 2017 Bharatham- All Rights Reserved</p>
-</div>
-</div>
-</div>
-</section>
-
-
-<div class="modal fade Gallery" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg col-md-12">
-<div class="modal-content"
-class="col-md-6">
-
-<div class="container align-center">
-<h1 class="pb-3 mbr-fonts-style mbr-section-title text-black bold display-1" style="padding-top:10px;">
-Gallery
-</h1>
-<div class="row" style="margin-bottom:50px;">
-
-<div v-for="video in videos" class="col-lg-6 col-md-6" style="margin-bottom:50px;" >
-<iframe :src="video" frameborder="0" style="padding: 0px; margin:0px; width:100%; height:100%; border-radius: 8px;" allowfullscreen></iframe></div>
-
-<div v-for="image in images" class="col-lg-6 col-md-6" style="margin-bottom: 50px;"><img style="width: 100%; height: 100%; padding: 0px; margin:0px; border-radius: 8px;" :src="image.url"></div>
-</div></div>
-</div>
-
-</div>
-</div>
-<div class="modal fade gtouch" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg ">
-<div class="modal-content col-md-12">
-
-<div class="container align-center">
-<h1 class="pb-3 mbr-fonts-style mbr-section-title text-black bold display-1" style="padding-top:10px;">
-THESE PEOPLE RUN THE SHOW
-</h1>
-<div class="row media-row" style="margin-bottom:50px;">
-
-<div v-for="person in people"
-class="team-item col-lg-4 col-md-6">
-<div class="item-image">
-<img v-bind:src="person.imgurl" class="img-icon" media-simple="true">
-</div>
-<div class="item-caption py-3">
-<div class="item-name px-2">
-<p class="mbr-fonts-style display-5" v-text="person.name">
-</p>
-</div>
-<div class="item-role px-2">
-<p v-text="person.position"></p>
-</div>
-<div class="item-social pt-2">
-<a v-bind:href="person.fbUrl" target="_blank">
-<span class="p-1 socicon-twitter socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
-<span class="p-1 socicon-facebook socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
-<span class="p-1 socicon-googleplus socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
-<span class="p-1 socicon-linkedin socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
-
-
-</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<audio loop autoplay = "autoplay" id="myAudio"
-<source src="https://rawgit.com/kirananto/bharatham/master/assets/audio/bgm.mp3"
-type='audio/mp4'>
-</audio>
-<style>
-
-@media (max-width: 768px) {
-.embed-responsive {
-padding-top:200% !important; border-radius: 30px;
-}
-}
-
-@media (min-width: 768px) {
-.embed-responsive {
-padding-top:100% !important; border-radius: 30px;
-}
-}
-
-</style>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/jquery/jquery.min.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/smooth-scroll/smooth-scroll.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/js/script.min.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-<script src="https://rawgit.com/kirananto/bharatham/master/assets/jarallax/jarallax.min.js"></script>
-<script src="https://cdn.rawgit.com/kirananto/bharatham/master/assets/theme/js/script.js"></script>
-<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.0/Rx.min.js"></script>
-<script>
-function aud_play_pause() {
-var myAudio = document.getElementById("myAudio");
-if (myAudio.paused) {
-myAudio.play();
-} else {
-myAudio.pause();
-}
-}
-
-
-var app = new Vue({
-el: '#app',
-data: {
-menu: [
-{ icon: 'mbri-touch',title:'Get in Touch',class:'.gtouch'},
-{ icon: 'mbri-login', title: 'Gallery',class:'.Gallery' }
-],
-people: [
-{ name: "Bisto Baby" ,position:"Chairman",imgurl:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAbrAAAAJDBjZjFhZjliLWJjYjMtNGYxMy1iNWEyLTIyOTY5ODk4YjhlMg.jpg",fbUrl:"https://www.facebook.com/bisto.sebastian"},
-{name: "George Zen Joe" ,position:"Arts Secretary",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/zen.jpg",fbUrl:"https://www.facebook.com/Georgezn510"},
-{name: "Delma Joseph" ,position:"Vice Chairperson",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/delma.jpg",fbUrl:"https://www.facebook.com/delz.joseph"},
-{name: "Arjun Sethunath" ,position:"General Convenor",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/arjun.jpg",fbUrl:"https://www.facebook.com/delz.joseph"},
-{name: "Razi Abdul Rahman" ,position:"General Secretary",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/razi.jpg",fbUrl:"https://www.facebook.com/razi.abdulrahman.1"},
-{name: "Gokul Krishna" ,position:"Finance Head",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/gokul.jpg",fbUrl:"https://www.facebook.com/gokulk10"},
-{name: "Kiran Anto" ,position:"Tech Support",imgurl:"https://rawgit.com/kirananto/bharatham/master/assets/images/kiran.jpg",fbUrl:"https://www.facebook.com/kiran.anto1"},
-{name: "Abhinav Thomas" ,position:"Tech Support",imgurl:"https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAy_AAAAJDU5YzIzOTYyLTQxZDItNGU5ZC04MTkzLWFhMDE3ZmY5NmYwZQ.jpg",fbUrl:"https://www.facebook.com/abhinavthomas"}],
-title: 'BHARATHAM\
-2k17',
-testing: true,
-groups: [
-{groupname: 'Aryans', Points:0},
-{groupname: 'Mughals', Points:0},
-{groupname: 'Rajputs', Points:0},
-{groupname: 'Vikings', Points:0},
-{groupname: 'Spartans', Points:0}
-],
-videos: [],
-images: []
-}
-
-})
-
-scoreRef.on('value', function(snapshot) {
-app.groups[0].Points = snapshot.val().aryans
-app.groups[1].Points = snapshot.val().mughals
-app.groups[2].Points = snapshot.val().rajputs
-app.groups[3].Points = snapshot.val().vikings
-app.groups[4].Points = snapshot.val().spartans
-});
-
-galleryRef.on('value', function(snapshot) {
-app.images = snapshot.val()
-// console.log(snapshot.val())
-});
-
-videoRef.on('value', function(snapshot) {
-// console.log(snapshot.val().videos[0])
-// app.videos = snapshot.val().videos
-// console.log(snapshot.val())
-});
-
-
-
-// Data
-var text = [
-"Bhavam",
-"Ragam",
-"Thalam",
-"Bharatham",
-"2K17"
-];
-
-// density
-
-
-//
-
-
-var scrollDelay = 1000; // delay for accepting the next scroll event
-var autoScrollDelay = 1500;
-// uncomment to override the defaults
-
-var colors = ["#ffffff","#684073", "#ffffff","#b35552", "#ffffff"];
-
-// particle-text init
-
-var lock = true;
-var textOnDisplay = 0;
-
-var font = "Rubik";
-
-var canvas = document.querySelector("#scene");
-ctx = canvas.getContext("2d");
-particles = [];
-amount = 0;
-mouse = {x:0,y:0};
-radius = 0.4;
-
-var lastPosX = [];
-var lastPosY = [];
-
-
-var lasttext = ""; // for resize()
-// var copy = document.querySelector("#copy");
-
-var ww = canvas.width = window.innerWidth;
-var wh = canvas.height = window.innerHeight;
-
-
-var densityFactor = ww > 768?150:130;
-var densityFactor = 130;
-var fontSizeFactor = ww > 768?null:1.3;
-
-var radiusFactor = ww > 768?2500:3000;
-
-ww = ww > wh? ww: wh;
-wh = ww > wh? wh: ww;
-
-function Particle(x, y, lastX, lastY){
-this.x = lastX;
-this.y = lastY;
-this.dest = {
-x : x,
-y: y
-};
-this.r = Math.random()*5*(ww/radiusFactor) + 2;
-this.vx = (Math.random()-0.5)*20;
-this.vy = (Math.random()-0.5)*20;
-this.accX = 0;
-this.accY = 0;
-this.friction = Math.random()*0.05 + 0.9;
-
-this.color = colors[Math.floor(Math.random()*(colors.length + 1))];
-}
-
-Particle.prototype.render = function() {
-this.accX = (this.dest.x - this.x)/300;
-this.accY = (this.dest.y - this.y)/300;
-this.vx += this.accX;
-this.vy += this.accY;
-this.vx *= this.friction;
-this.vy *= this.friction;
-
-this.x += this.vx;
-this.y += this.vy;
-
-ctx.fillStyle = this.color;
-ctx.beginPath();
-ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
-ctx.fill();
-
-var a = this.x - mouse.x;
-var b = this.y - mouse.y;
-
-var distance = Math.sqrt( a*a + b*b );
-if(distance<(radius*70)){
-this.accX = (this.x - mouse.x)/100;
-this.accY = (this.y - mouse.y)/100;
-this.vx += this.accX;
-this.vy += this.accY;
-}
-}
-
-function onMouseMove(e){
-mouse.x = e.clientX;
-mouse.y = e.clientY;
-}
-
-function onTouchMove(e){
-// console.log("moved");
-if(e.touches.length > 0 ){
-mouse.x = e.touches[0].clientX;
-mouse.y = e.touches[0].clientY;
-}
-}
-
-function onTouchEnd(e){
-// console.log("ended");
-mouse.x = -9999;
-mouse.y = -9999;
-}
-
-function onMouseUp(e){
-// console.log("mu");
-setTimeout(()=>{
-mouse.x = -9999;
-mouse.y = -9999;
-},50);
-}
-
-function initScene(text){
-
-lasttext = text; // for resize
-
-ww = canvas.width = window.innerWidth;
-wh = canvas.height = window.innerHeight;
-
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-ctx.font = "bold "+Math.floor((ww/10)*(text.length >14 || fontSizeFactor === null ?14/text.length:fontSizeFactor))+"px " + font;
-// console.log(ctx.font);
-ctx.textAlign = "center";
-ctx.fillText(text, ww/2, wh/2);
-
-var data = ctx.getImageData(0, 0, ww, wh).data;
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-ctx.globalCompositeOperation = "screen";
-
-// console.log("length" + lastPosX.length);
-particles = [];
-var count = 0;
-for(var i=0;i<ww;i+=Math.round(ww/densityFactor)){
-for(var j=0;j<wh;j+=Math.round(ww/densityFactor)){
-
-if(data[ ((i + j*ww)*4) + 3] > 150){
-count = count + 1;
-
-if (lastPosX.length < count) {
-lastPosX.push(Math.random()*ww);
-lastPosY.push(Math.random()*wh);
-
-}
-
-particles.push(new Particle(i, j, lastPosX[count-1], lastPosY[count-1]));
-}
-}
-}
-amount = particles.length;
-
-
-// console.log("no.of parts: " + amount)
-}
-
-function onMouseClick(){
-//radius++;
-// console.log("click");
-if(radius ===5){
-radius = 0;
-}
-}
-
-function render(a) {
-requestAnimationFrame(render);
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-for (var i = 0; i < amount; i++) {
-particles[i].render();
-lastPosX[i] = particles[i].x;
-lastPosY[i] = particles[i].y;
-}
-};
-
-// copy.addEventListener("keyup", initScene);
-window.addEventListener("resize", () => initScene(lasttext));
-window.addEventListener("mousemove", onMouseMove);
-window.addEventListener("touchmove", onTouchMove);
-window.addEventListener("mouseup", onMouseUp);
-// window.addEventListener("click", onMouseClick);
-window.addEventListener("touchend", onTouchEnd);
-
-setTimeout(() => { // prevent the user from scrolling too soon
-lock = false;
-// console.log("init scene");
-initScene(text[0]);
-// console.log("render scene");
-requestAnimationFrame(render);
-setInterval(() => {
-// console.log("set interval!");
-// while(lock){
-// console.log("while loop");
-// }
-if (lock === false){
-lock = true;
-textOnDisplay = (textOnDisplay + 1) % text.length;
-// console.log("------TEXTONDISPLAY---"+textOnDisplay);
-if(textOnDisplay < 5) {
-initScene(text[textOnDisplay]);
-setTimeout(() => { // prevent the user from scrolling too soon
-lock = false;
-},scrollDelay+autoScrollDelay);
-}
-}
-},scrollDelay + autoScrollDelay);
-
-},scrollDelay);
-
-
-
-
-
-
-
-
-// scroll reveal
-
-window.sr = ScrollReveal();
-
-(() => {
-
-Rx.Observable.fromEvent(window,'mousewheel')
-.map( e => e.wheelDelta > 0)
-.filter( () => lock === false )
-.subscribe( (delta) => {
-lock = true;
-var t = delta?(textOnDisplay > 1 ? textOnDisplay - 1: 0 ): (textOnDisplay < text.length -1? textOnDisplay + 1:textOnDisplay)
-// console.log(delta,textOnDisplay);
-if (t != textOnDisplay){
-textOnDisplay = t;
-initScene(text[textOnDisplay]);
-}
-setTimeout(() => {
-lock = false;
-},scrollDelay);
-});
-
-})()
-
-</script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="generator" content="Bharatham 2k17">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://rawgit.com/kirananto/bharatham/master/assets/images/icon.png" type="image/x-icon">
+		<link rel="manifest" href="https://rawgit.com/kirananto/bharatham/master/assets/manifest.json">
+		<meta name="theme-color" content="#401c42" />
+		<meta name="description" content="">
+		<title>Bharatham 2k17</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/icons/icons.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/css/style.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/socicon/css/styles.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/theme/css/style.css">
+		<link rel="stylesheet" href="https://rawgit.com/kirananto/bharatham/master/assets/additional/css/additional.css">
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDwhlGYmRDt_-AG_dNSQfbJnBQ6EUD5nh4",
+				authDomain: "bharatham-2k17.firebaseapp.com",
+				databaseURL: "https://bharatham-2k17.firebaseio.com",
+				projectId: "bharatham-2k17",
+				storageBucket: "bharatham-2k17.appspot.com",
+				messagingSenderId: "859947034253"
+			};
+			firebase.initializeApp(config);
+			var scoreRef = firebase.database().ref('Score/House');
+			var galleryRef = firebase.database().ref('gallery');
+			var videoRef = firebase.database().ref('video_app');
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<section class="menu cid-qr22Lg6fJW" once="menu" id="menu1-g" data-rv-view="78">
+				<nav class="navbar navbar-dropdown align-items-center navbar-toggleable-sm bg-color transparent">
+					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<div class="hamburger">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</button>
+					<div class="menu-logo">
+						<div class="navbar-brand"></div>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true">
+							<li v-for="(item,i) in menu"
+							:key = "i"
+							class="nav-item">
+								<a data-toggle="modal"
+								v-bind:data-target="item.class"
+								class="nav-link link display-4" v-text="item.title"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link">
+									<span class="mbri-music mbr-iconfont mbr-iconfont-btn" onclick="aud_play_pause()" id="audio"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</section>
+			<section class="engine"></section>
+			<section class="cid-qr22LijaMf mbr-fullscreen mbr-parallax-background" id="header2-e" data-rv-view="80">
+				<div class="container align-center">
+					<div class="media-container-column mbr-white col-md-10 offset-md-1">
+						<canvas id="scene" class="mbr-section-title " style="margin-top:70px;"></canvas>
+					</div>
+				</div>
+			</section>
+			<section class="cid-qsa76ohnMU mbr-fullscreen " id="pricing-tables1-k" data-rv-view="32">
+				<div class="container">
+					<div class="media-container-row">
+						<div v-for="group in groups" class="plan col-12 mx-2 my-2 justify-content-center col-lg-2">
+							<div class="plan-header text-center pt-5">
+								<img :src="'https://rawgit.com/kirananto/bharatham/master/assets/images/group/'+group.groupname+'.png'"
+								class="groupimg">
+								<h3 class=" mbr-fonts-style display-5 text-black " v-text="group.groupname"></h3>
+								<div class="plan-body" style="padding-bottom: 2rem !important;" >
+									<span class="price-figure mbr-fonts-style display-1" v-text="group.Points"></span>
+									<small class=" mbr-fonts-style display-7"><br>Points</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="https://play.google.com/store/apps/details?id=com.roundmelon.jv.bharatham2k17&hl=en" class="play_button col-md-12 ">
+						<img class="col-md-2 offset-md-5" style="margin-top: 3rem;" src="https://rawgit.com/kirananto/bharatham/master/assets/images/play_button.png">
+					</a>
+			</section>
+			<section once="" class="cid-qrtL4E2nFT" id="footer7-o" data-rv-view="83">
+				<div class="container">
+					<div class="media-container-row align-center mbr-white">
+						<div class="row">
+							<ul class="foot-menu">
+								<li v-for="(item,i) in menu"
+								:key = "i"
+								class="foot-menu-item mbr-fonts-style display-7">
+									<a class="text-white mbr-bold"
+									data-toggle="modal"
+									v-bind:data-target="item.class"
+									target="_blank">
+										<span v-text="item.title"></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<div class="social-list align-right pb-2">
+								<div class="soc-item">
+									<a href="https://www.facebook.com/bharatham2017" target="_blank">
+										<span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon" media-simple="true"></span>
+									</a>
+								</div>
+								<div class="soc-item">
+									<a href="https://instagram.com/_u/bharatham2k176699" target="_blank">
+										<span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon" media-simple="true"></span>
+									</a>
+								</div>
+								<div class="soc-item">
+									<a href="https://play.google.com/store/apps/details?id=com.roundmelon.jv.bharatham2k17&hl=en" target="_blank">
+										<span class="mbr-iconfont mbr-iconfont-social socicon-play socicon" media-simple="true"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row row-copirayt">
+							<p class="mbr-text mb-0 mbr-fonts-style mbr-white display-7">© Copyright 2017 Bharatham- All Rights Reserved</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="modal fade Gallery" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg col-md-12">
+					<div class="modal-content"
+					class="col-md-6">
+						<div class="container align-center">
+							<h1 class="pb-3 mbr-fonts-style mbr-section-title text-black bold display-1" style="padding-top:10px;">
+							Gallery</h1>
+							<div class="row" style="margin-bottom:50px;">
+								<div v-for="video in videos" class="col-lg-6 col-md-6" style="margin-bottom:50px;" >
+									<iframe :src="video" frameborder="0" style="padding: 0px; margin:0px; width:100%; height:100%; border-radius: 8px;" allowfullscreen></iframe>
+								</div>
+								<div v-for="image in images" class="col-lg-6 col-md-6" style="margin-bottom: 50px;"><img style="width: 100%; height: 100%; padding: 0px; margin:0px; border-radius: 8px;" :src="image.url"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade gtouch" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg ">
+					<div class="modal-content col-md-12">
+						<div class="container align-center">
+							<h1 class="pb-3 mbr-fonts-style mbr-section-title text-black bold display-1" style="padding-top:10px;">
+							THESE PEOPLE RUN THE SHOW</h1>
+							<div class="row media-row" style="margin-bottom:50px;">
+								<div v-for="person in people" class="team-item col-lg-4 col-md-6">
+									<div class="item-image">
+										<img v-bind:src="person.imgurl" class="img-icon" media-simple="true">
+									</div>
+									<div class="item-caption py-3">
+										<div class="item-name px-2">
+											<p class="mbr-fonts-style display-5" v-text="person.name"></p>
+										</div>
+										<div class="item-role px-2">
+											<p v-text="person.position"></p>
+										</div>
+										<div class="item-social pt-2">
+											<a v-bind:href="person.fbUrl" target="_blank">
+												<span class="p-1 socicon-twitter socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
+												<span class="p-1 socicon-facebook socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
+												<span class="p-1 socicon-googleplus socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
+												<span class="p-1 socicon-linkedin socicon mbr-iconfont mbr-iconfont-social" media-simple="true"></span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<audio loop autoplay = "autoplay" id="myAudio"
+			<source src="https://rawgit.com/kirananto/bharatham/master/assets/audio/bgm.mp3" type='audio/mp4'>
+		</audio>
+		<style>
+			@media (max-width: 768px) {
+				.embed-responsive {
+					padding-top:200% !important; border-radius: 30px;
+				}
+			}
+
+			@media (min-width: 768px) {
+				.embed-responsive {
+					padding-top:100% !important; border-radius: 30px;
+				}
+			}
+		</style>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/web/assets/jquery/jquery.min.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/tether/tether.min.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/smooth-scroll/smooth-scroll.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/dropdown/js/script.min.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+		<script src="https://rawgit.com/kirananto/bharatham/master/assets/jarallax/jarallax.min.js"></script>
+		<script src="https://cdn.rawgit.com/kirananto/bharatham/master/assets/theme/js/script.js"></script>
+		<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.0/Rx.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
 </html>
