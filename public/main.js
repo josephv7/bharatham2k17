@@ -31,7 +31,8 @@ var app = new Vue({
 			{groupname: 'Vikings', Points:0},
 			{groupname: 'Spartans', Points:0}],
 		videos: [],
-		images: []
+		images: [],
+		events: []
 	}
 })
 
@@ -49,5 +50,40 @@ galleryRef.on('value', function(snapshot) {
 
 videoRef.on('value', function(snapshot) {
 });
+
+var o=[]
+eventsRef.on('value',function(snapshot){
+	app.events = []
+	var event_obj = {first:"",first_name:"",second:"",second_name:"",third:"",third_name:"",name:""}
+	event_obj.first = "null"
+	event_obj.second = "null"
+	event_obj.third = "null"
+	snapshot.forEach(function(ch){
+		event_obj.name = ch.key
+		ch.forEach(function(child){
+			child.forEach(function(c){
+				if(c.val().position === "first" ){
+					event_obj.first = c.val().house
+					event_obj.first_name = c.val().name
+				} else if(c.val().position === "second" ) {
+					event_obj.second = c.val().house
+					event_obj.second_name = c.val().name
+				} else if(c.val().position === "third") {						
+					event_obj.third = c.val().house
+					event_obj.third_name = c.val().name
+				}
+				if((event_obj.first != "null")&&(event_obj.second != "null")&&(event_obj.third != "null")){
+					// console.log({first:event_obj.first,second:event_obj.second,third:event_obj.third,name:event_obj.name});	
+					app.events.push({first:event_obj.first,first_name:event_obj.first_name,second:event_obj.second,second_name:event_obj.second_name,third:event_obj.third,third_name:event_obj.third_name,name:event_obj.name})
+					event_obj.first = "null"
+					event_obj.second = "null"
+					event_obj.third = "null"
+					event_obj.name = "null"
+				}
+			})			
+		})
+		
+	})			
+})
 
 

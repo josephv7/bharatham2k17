@@ -1263,7 +1263,7 @@ pre {
 .cid-qsa76ohnMU {
   padding-top: 90px;
   padding-bottom: 90px;
- background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../../../assets/images/bg.jpg") no-repeat 0 0;
+ background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../../../assets/images/bg.jpg") 0 0;
 }
 .cid-qsa76ohnMU .list-group-item {
   padding: .75rem 3.25rem;
@@ -1314,4 +1314,19 @@ pre {
 .groupimg{
   height: 12rem;
   padding : 1rem;
+}
+.score-card {
+  background-color: white; 
+  margin: 1rem; 
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.capt {
+  color: #41203f;
+}
+
+.names {
+  font-size: 12px;
+  padding:0px;
 }

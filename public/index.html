@@ -18,7 +18,6 @@
 		<link rel="stylesheet" href="./assets/theme/css/style.css">
 		<link rel="stylesheet" href="./assets/additional/css/additional.css">
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
-		<script src="./pwabuilder-sw-register.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
 		<script>
@@ -35,6 +34,7 @@
 			var scoreRef = firebase.database().ref('Score/House');
 			var galleryRef = firebase.database().ref('gallery');
 			var videoRef = firebase.database().ref('video_app');
+			var eventsRef = firebase.database().ref('main/events')
 		</script>
 	</head>
 	<body>
@@ -97,9 +97,44 @@
 						<img class="col-md-2 offset-md-5" style="margin-top: 3rem;" src="./assets/images/play_button.png">
 					</a>
 			</section>
+
+
+			<section class="cid-qsa76ohnMU mbr-fullscreen " id="pricing-tables1-k" data-rv-view="32">
+				<div class="container align-center">
+				<div class="media-container-column mbr-white col-md-10 offset-md-1 display-1">
+						<strong>DETAILED SCORE</strong>
+					</div>
+						<div class="row media-row offset-md-1" style="margin-bottom:50px;">
+								<div v-for="event in events" class="team-item col-lg-3 col-md-4 score-card">
+									<div class="item-caption py-3 col-md-12">
+										<div class="item-name ">
+											<strong><p class="mbr-fonts-style display-6 " v-text="event.name.split('_').join(' ')"></p></strong>
+										</div>
+										<div class="align-left" style="margin-left:10px;">
+												<div class="row ">
+													<div class="col-md-6 capt"><strong >FIRST :</strong> </div>
+													<div class="col-md-6 names">{{event.first_name.toUpperCase().split(',').join(', ')}} <strong>({{event.first.toUpperCase()}})</strong></div>
+												</div>
+												<div class="row ">
+													<div class="col-md-6 capt"><strong>SECOND :</strong> </div>
+													<div class="col-md-6 names" >{{event.second_name.toUpperCase().split(',').join(', ')}} <strong>({{event.second.toUpperCase()}})</strong></div>
+												</div>
+												<div class="row ">
+													<div class="col-md-6 capt"><strong >THIRD :</strong> </div>
+													<div class="col-md-6 names" >{{event.third_name.toUpperCase().split(',').join(', ')}} <strong>({{event.third.toUpperCase()}})</strong></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
 			<section once="" class="cid-qrtL4E2nFT" id="footer7-o" data-rv-view="83">
 				<div class="container">
 					<div class="media-container-row align-center mbr-white">
+					
 						<div class="row">
 							<ul class="foot-menu">
 								<li v-for="(item,i) in menu"
@@ -218,5 +253,12 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.0/Rx.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 		<script type="text/javascript" src="pattern.js"></script>
+		<script type="text/javascript">
+			if ('serviceWorker' in navigator) {
+		  		window.addEventListener('load', function() {
+		    		navigator.serviceWorker.register('/pwabuilder-sw.js');
+		  		});
+			}
+		</script>
 	</body>
 </html>
