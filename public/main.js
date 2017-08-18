@@ -30,7 +30,6 @@ var app = new Vue({
 			{groupname: 'Rajputs', Points:0},
 			{groupname: 'Vikings', Points:0},
 			{groupname: 'Spartans', Points:0}],
-		videos: [],
 		images: [],
 		events: []
 	}
@@ -45,11 +44,12 @@ scoreRef.on('value', function(snapshot) {
 });
 
 galleryRef.on('value', function(snapshot) {
-	app.images = snapshot.val()
+	app.images=[]
+	snapshot.forEach(function(child){
+		app.images.push(child.val())
+	})
 });
 
-videoRef.on('value', function(snapshot) {
-});
 
 var o=[]
 eventsRef.on('value',function(snapshot){
