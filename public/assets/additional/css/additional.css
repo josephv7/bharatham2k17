@@ -1335,5 +1335,6 @@ pre {
 .play_msg {
   margin-top: 1rem;
   font-size: 10px;
-  color: #bfbdbd;
+  color: #7b2626;
+  font-weight: bold;
 }
