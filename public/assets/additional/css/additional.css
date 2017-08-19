@@ -1330,3 +1330,9 @@ pre {
   font-size: 12px;
   padding:0px;
 }
+
+.play_msg {
+  margin-top: 1rem;
+  font-size: 10px;
+  color: #bfbdbd;
+}

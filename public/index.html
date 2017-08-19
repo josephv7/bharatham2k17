@@ -87,7 +87,7 @@
 						<strong>DETAILED SCORE</strong>
 					</div>
 						<div class="row media-row offset-md-1" style="margin-bottom:50px;">
-								<div v-for="event in events" class="team-item col-lg-3 col-md-4 score-card">
+								<div v-for="(event,index) in events"  :key = "i" class="team-item col-lg-3 col-md-4 score-card">
 									<div class="item-caption py-3 col-md-12">
 										<div class="item-name ">
 											<strong><p class="mbr-fonts-style display-6 " v-text="event.name.split('_').join(' ')"></p></strong>
@@ -104,7 +104,10 @@
 												<div class="row ">
 													<div class="col-md-6 capt"><strong >THIRD :</strong> </div>
 													<div class="col-md-6 names" >{{event.third_name.toUpperCase().split(',').join(', ')}} <strong>({{event.third.toUpperCase()}})</strong></div>
-									</div>
+												</div>
+												<div v-if="(index-1)%6 === 0" class="row play_msg">
+													 For more download the app from play store
+												</div>
 								</div>
 							</div>
 						</div>

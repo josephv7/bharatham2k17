@@ -43,11 +43,11 @@ var app = new Vue({
 		title: 'BHARATHAM\
 				2k17',
 		groups: [
-			{groupname: 'Aryans', Points:0},
-			{groupname: 'Mughals', Points:0},
-			{groupname: 'Rajputs', Points:0},
-			{groupname: 'Vikings', Points:0},
-			{groupname: 'Spartans', Points:0}],
+			{groupname: 'Aryans', Points:''},
+			{groupname: 'Mughals', Points:''},
+			{groupname: 'Rajputs', Points:''},
+			{groupname: 'Vikings', Points:''},
+			{groupname: 'Spartans', Points:'	'}],
 		images: [],
 		events: []
 	}
