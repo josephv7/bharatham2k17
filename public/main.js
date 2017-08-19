@@ -1,3 +1,4 @@
+//Function to toggle audioplayback
 function aud_play_pause() {
 	var myAudio = document.getElementById("myAudio");
 	if (myAudio.paused) {
@@ -6,6 +7,23 @@ function aud_play_pause() {
 		myAudio.pause();
 	}
 }
+
+// Initialize Firebase
+var config = {
+	apiKey: "AIzaSyDwhlGYmRDt_-AG_dNSQfbJnBQ6EUD5nh4",
+	authDomain: "bharatham-2k17.firebaseapp.com",
+	databaseURL: "https://bharatham-2k17.firebaseio.com",
+	projectId: "bharatham-2k17",
+	storageBucket: "bharatham-2k17.appspot.com",
+	messagingSenderId: "859947034253"
+};
+firebase.initializeApp(config);
+var scoreRef = firebase.database().ref('Score/House');
+var galleryRef = firebase.database().ref('gallery');
+var eventsRef = firebase.database().ref('main/events')
+
+
+//Initialize Vue Instance
 
 var app = new Vue({
 	el: '#app',
@@ -35,6 +53,7 @@ var app = new Vue({
 	}
 })
 
+// Code to update scores
 scoreRef.on('value', function(snapshot) {
 	app.groups[0].Points = snapshot.val().aryans
 	app.groups[1].Points = snapshot.val().mughals
@@ -43,6 +62,8 @@ scoreRef.on('value', function(snapshot) {
 	app.groups[4].Points = snapshot.val().spartans
 });
 
+
+//Code to fetch all the images
 galleryRef.on('value', function(snapshot) {
 	app.images=[]
 	snapshot.forEach(function(child){
@@ -50,7 +71,7 @@ galleryRef.on('value', function(snapshot) {
 	})
 });
 
-
+// code to display detailed score
 var o=[]
 eventsRef.on('value',function(snapshot){
 	app.events = []
@@ -72,8 +93,7 @@ eventsRef.on('value',function(snapshot){
 					event_obj.third = c.val().house
 					event_obj.third_name = c.val().name
 				}
-				if((event_obj.first != "null")&&(event_obj.second != "null")&&(event_obj.third != "null")){
-					// console.log({first:event_obj.first,second:event_obj.second,third:event_obj.third,name:event_obj.name});	
+				if((event_obj.first != "null")&&(event_obj.second != "null")&&(event_obj.third != "null")){	
 					app.events.push({first:event_obj.first,first_name:event_obj.first_name,second:event_obj.second,second_name:event_obj.second_name,third:event_obj.third,third_name:event_obj.third_name,name:event_obj.name})
 					event_obj.first = "null"
 					event_obj.second = "null"
